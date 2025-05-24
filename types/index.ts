@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse } from "http";
+// Vercel Runtime Types (Node.js compatibility)
 
 // Dify API Types
 export interface DifyChatRequest {
