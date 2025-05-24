@@ -121,19 +121,76 @@ GET /api/health
 
 ### ローカル開発
 
+#### 🚀 pnpm での高速開発（推奨）
+
 ```bash
 # 依存関係をインストール
-npm install
+pnpm install
 
 # 環境変数を設定（.env ファイルを作成）
-cp env.example .env
+pnpm run setup
+# または手動で: cp env.example .env
+
 # .env ファイルを編集してDIFY_API_KEYを設定
+# DIFY_API_KEY=your_actual_api_key_here
 
 # ローカルサーバーを起動
-npm run dev
+pnpm dev
+```
+
+#### 📱 ローカル開発環境の機能
+
+-   **ホットリロード**: TypeScript ファイルの変更を自動検知
+-   **テスト UI**: ブラウザから直接 API をテスト可能
+-   **詳細ログ**: リクエスト/レスポンスの詳細ログ
+-   **エラーハンドリング**: 開発時の詳細なエラー情報
+
+#### 🌐 利用可能な URL
+
+```bash
+# 開発サーバー起動後に利用可能
+http://localhost:3000                    # API ドキュメント
+http://localhost:3000/test-chat.html     # チャットAPIテスト
+http://localhost:3000/api/health         # ヘルスチェック
+http://localhost:3000/api/chat           # チャットAPI仕様
+```
+
+#### 🔧 その他のコマンド
+
+```bash
+# Vercel開発環境を使用する場合
+pnpm run dev:vercel
+
+# TypeScriptの型チェック
+pnpm run typecheck
+
+# プロダクションビルド
+pnpm run build
 ```
 
 ### API テスト例（curl）
+
+#### ローカル環境でのテスト
+
+```bash
+# ヘルスチェック
+curl http://localhost:3000/api/health
+
+# チャット
+curl -X POST http://localhost:3000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "こんにちは、調子はどうですか？"}'
+
+# テキスト生成
+curl -X POST http://localhost:3000/api/completion \
+  -H "Content-Type: application/json" \
+  -d '{"inputs": {"text": "AIについての短い物語を書いて"}}'
+
+# API仕様確認（ブラウザでも確認可能）
+curl http://localhost:3000/api/chat
+```
+
+#### 本番環境でのテスト
 
 ```bash
 # ヘルスチェック
