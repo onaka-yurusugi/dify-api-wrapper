@@ -1,0 +1,31 @@
+{
+    "name": "dify-api-wrapper",
+    "version": "1.0.0",
+    "description": "Dify Chatbot API Wrapper for Vercel deployment",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vercel dev",
+        "build": "echo 'No build step needed'",
+        "start": "node api/index.js",
+        "test": "echo 'No tests specified' && exit 0"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+        "vercel": "^33.0.1"
+    },
+    "keywords": [
+        "dify",
+        "api",
+        "wrapper",
+        "vercel",
+        "chatbot"
+    ],
+    "author": "",
+    "license": "MIT",
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
