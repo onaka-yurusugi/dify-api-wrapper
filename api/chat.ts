@@ -80,6 +80,29 @@ const handler = async (
     }
 
     try {
+        // Check if request body exists and is valid
+        if (!req.body || typeof req.body !== "object") {
+            res.status(400).json({
+                error: "Bad request",
+                message: "Request body is required and must be valid JSON",
+                help: {
+                    content_type:
+                        "Make sure Content-Type header is set to 'application/json'",
+                    body_format: {
+                        message: "string (required)",
+                        conversation_id: "string (optional)",
+                        user_id: "string (optional, default: 'default-user')",
+                    },
+                    example: {
+                        message: "Hello, how are you?",
+                        conversation_id: "1c7e55fb-1ba2-4e10-81b5-30addcea2276",
+                        user_id: "user123",
+                    },
+                },
+            });
+            return;
+        }
+
         const {
             message,
             conversation_id,
@@ -87,10 +110,10 @@ const handler = async (
         }: DifyChatRequest = req.body;
 
         // Validate required parameters
-        if (!message) {
+        if (!message || message.trim() === "") {
             res.status(400).json({
                 error: "Bad request",
-                message: "Message is required",
+                message: "Message is required and cannot be empty",
             });
             return;
         }
