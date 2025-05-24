@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dify API Wrapper</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .endpoint {
+            background-color: #f8fafc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .post {
+            background-color: #10b981;
+        }
+
+        .get {
+            background-color: #3b82f6;
+        }
+
+        code {
+            background-color: #e5e7eb;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        .github-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .github-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🤖 Dify API Wrapper</h1>
+
+        <p>DifyのチャットボットAPIをラップするサーバーレスAPIです。TypeScriptで型安全性を提供し、フロントエンドから簡単に利用できます。</p>
+
+        <h2>📚 API エンドポイント</h2>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> /api/chat</h3>
+            <p>Difyチャットボットとの会話を行います。</p>
+            <p><strong>パラメータ:</strong> <code>message</code>, <code>conversation_id</code> (オプション), <code>user_id</code>
+                (オプション)</p>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> /api/completion</h3>
+            <p>Difyを使用してテキスト生成を行います。</p>
+            <p><strong>パラメータ:</strong> <code>inputs</code>, <code>user_id</code> (オプション), <code>response_mode</code>
+                (オプション)</p>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> /api/health</h3>
+            <p>APIの稼働状況と設定を確認します。</p>
+        </div>
+
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> /api/</h3>
+            <p>詳細なAPIドキュメントとサンプルコードを表示します。</p>
+        </div>
+
+        <h2>🚀 使用方法</h2>
+        <p>詳細なAPIドキュメントとサンプルコードは <code><a href="/api/">/api/</a></code> エンドポイントで確認できます。</p>
+
+        <h2>✨ 特徴</h2>
+        <ul>
+            <li>✅ TypeScriptで型安全性を提供</li>
+            <li>✅ CORS対応でフロントエンドから直接利用可能</li>
+            <li>✅ 包括的なエラーハンドリング</li>
+            <li>✅ 環境変数による設定管理</li>
+            <li>✅ Vercelでの高速デプロイ</li>
+        </ul>
+
+        <div class="github-link">
+            <a href="https://github.com/onaka-yurusugi/dify-api-wrapper" target="_blank">
+                📦 GitHub でソースコードを見る
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
