@@ -38,11 +38,43 @@ const handler = async (
     req: VercelRequest,
     res: VercelResponse
 ): Promise<void> => {
-    // Only allow POST requests
+    // Handle GET requests with helpful information
+    if (req.method === "GET") {
+        const baseUrl = `https://${req.headers.host}`;
+        res.status(200).json({
+            endpoint: "/api/chat",
+            method: "POST",
+            description: "Send chat messages to Dify chatbot",
+            documentation: `${baseUrl}`,
+            test_page: `${baseUrl}/test-chat.html`,
+            parameters: {
+                message: "string (required) - The message to send",
+                conversation_id:
+                    "string (optional) - Conversation ID for context",
+                user_id:
+                    'string (optional) - User identifier (default: "default-user")',
+            },
+            example_request: {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: {
+                    message: "Hello, how are you?",
+                    conversation_id: "1c7e55fb-1ba2-4e10-81b5-30addcea2276",
+                    user_id: "user123",
+                },
+            },
+        });
+        return;
+    }
+
+    // Only allow POST requests for actual chat functionality
     if (req.method !== "POST") {
         res.status(405).json({
             error: "Method not allowed",
-            message: "This endpoint only accepts POST requests",
+            message:
+                "This endpoint only accepts POST requests for chat functionality. Use GET for documentation.",
         });
         return;
     }
